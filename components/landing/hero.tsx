@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play, Sparkles, Star } from "lucide-react";
 import { ParticleCanvas } from "./particle-canvas";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useAuth } from "@clerk/nextjs";
 
 const avatars = [
   "https://i.pravatar.cc/40?img=1",
@@ -23,6 +24,8 @@ const fadeUp = {
 };
 
 export function Hero() {
+  const { isSignedIn } = useAuth();
+  const startFreeHref = isSignedIn ? "/dashboard" : "/sign-up";
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16">
       {/* Background radial glows */}
@@ -77,10 +80,9 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <a
-            href="/sign-up"
+            href={startFreeHref}
             className="btn-primary flex items-center gap-2 text-base px-8 py-3.5 pulse-glow"
           >
-            <Sparkles size={18} />
             Start Free — No Credit Card
             <ArrowRight size={16} />
           </a>

@@ -209,7 +209,7 @@ function Cursor({ ref, asChild = false, style, ...props }: CursorProps) {
           style={{
             transform: 'translate(-50%,-50%)',
             pointerEvents: 'none',
-            zIndex: 9999,
+            zIndex: 2147483647,
             position: global ? 'fixed' : 'absolute',
             top: y,
             left: x,

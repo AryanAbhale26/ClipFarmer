@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { GlobalCursor } from "@/components/ui/global-cursor";
 import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 import { ClerkProvider } from "@clerk/nextjs";
+import { SyncUser } from "@/components/sync-user";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
@@ -34,6 +35,7 @@ export default function RootLayout({
         <body className="min-h-screen bg-background text-foreground antialiased selection:bg-violet-500/30">
           <GlobalCursor />
           <StarsBackground starColor="#ffffff">
+            <SyncUser />
             {children}
           </StarsBackground>
         </body>

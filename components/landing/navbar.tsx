@@ -66,10 +66,9 @@ export function Navbar() {
               Sign In
             </Link>
             <Link 
-              href="/sign-up" 
+              href="/dashboard" 
               className={cn(buttonVariants({ variant: "outline" }), "bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white")}
             >
-              <Sparkles size={14} className="mr-2" />
               Start Free
             </Link>
           </Show>
@@ -124,11 +123,10 @@ export function Navbar() {
                     Sign In
                   </Link>
                   <Link 
-                    href="/sign-up" 
+                    href="/dashboard" 
                     onClick={() => setMobileOpen(false)}
                     className={cn(buttonVariants({ variant: "outline" }), "w-full bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white")}
                   >
-                    <Sparkles size={14} className="mr-2" />
                     Start Free
                   </Link>
                 </Show>
