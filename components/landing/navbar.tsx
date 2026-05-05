@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Menu, X, Zap } from "lucide-react";
 import Link from "next/link";
+import { Show, UserButton } from "@clerk/nextjs";
+
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -54,16 +58,30 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="/sign-in" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium">
-            Sign In
-          </a>
-          <a
-            href="/sign-up"
-            className="btn-primary text-sm flex items-center gap-1.5"
-          >
-            <Sparkles size={14} />
-            Start Free
-          </a>
+          <Show when="signed-out">
+            <Link 
+              href="/sign-in" 
+              className={cn(buttonVariants({ variant: "ghost" }), "text-muted-foreground hover:text-foreground")}
+            >
+              Sign In
+            </Link>
+            <Link 
+              href="/sign-up" 
+              className={cn(buttonVariants({ variant: "outline" }), "bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white")}
+            >
+              <Sparkles size={14} className="mr-2" />
+              Start Free
+            </Link>
+          </Show>
+          <Show when="signed-in">
+            <Link 
+              href="/dashboard" 
+              className={cn(buttonVariants({ variant: "ghost" }), "text-muted-foreground hover:text-foreground mr-2")}
+            >
+              Dashboard
+            </Link>
+            <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
+          </Show>
         </div>
 
         {/* Mobile menu button */}
@@ -97,13 +115,35 @@ export function Navbar() {
                 </a>
               ))}
               <div className="pt-2 border-t border-violet-500/10 flex flex-col gap-3">
-                <a href="/sign-in" className="text-muted-foreground hover:text-foreground font-medium transition-colors">
-                  Sign In
-                </a>
-                <a href="/sign-up" className="btn-primary text-center text-sm flex items-center justify-center gap-1.5">
-                  <Sparkles size={14} />
-                  Start Free
-                </a>
+                <Show when="signed-out">
+                  <Link 
+                    href="/sign-in" 
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(buttonVariants({ variant: "ghost" }), "w-full text-muted-foreground hover:text-foreground")}
+                  >
+                    Sign In
+                  </Link>
+                  <Link 
+                    href="/sign-up" 
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(buttonVariants({ variant: "outline" }), "w-full bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white")}
+                  >
+                    <Sparkles size={14} className="mr-2" />
+                    Start Free
+                  </Link>
+                </Show>
+                <Show when="signed-in">
+                  <Link 
+                    href="/dashboard" 
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(buttonVariants({ variant: "ghost" }), "w-full text-muted-foreground hover:text-foreground mb-2")}
+                  >
+                    Dashboard
+                  </Link>
+                  <div className="flex justify-center">
+                    <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
+                  </div>
+                </Show>
               </div>
             </div>
           </motion.div>
