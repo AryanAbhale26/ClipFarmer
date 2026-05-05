@@ -66,7 +66,7 @@ export function AppSidebar() {
 
       <SidebarFooter className="border-t border-white/5 p-4">
         <div className="flex items-center gap-3 w-full px-2 py-2 rounded-xl hover:bg-white/5 transition-colors cursor-pointer border border-transparent hover:border-white/5">
-          <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: "w-9 h-9" } }} />
+          <UserButton appearance={{ elements: { userButtonAvatarBox: "w-9 h-9" } }} />
           <div className="flex flex-col flex-1 text-left overflow-hidden">
             <span className="text-sm font-medium text-foreground truncate">User Settings</span>
             <span className="text-xs text-muted-foreground truncate">Manage account</span>

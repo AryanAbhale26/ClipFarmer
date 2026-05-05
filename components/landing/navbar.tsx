@@ -79,7 +79,7 @@ export function Navbar() {
             >
               Dashboard
             </Link>
-            <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
+            <UserButton appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
           </Show>
         </div>
 
@@ -139,7 +139,7 @@ export function Navbar() {
                     Dashboard
                   </Link>
                   <div className="flex justify-center">
-                    <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
+                    <UserButton appearance={{ elements: { userButtonAvatarBox: "w-8 h-8" } }} />
                   </div>
                 </Show>
               </div>
